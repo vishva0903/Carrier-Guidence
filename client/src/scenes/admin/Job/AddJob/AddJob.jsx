@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './addjob.css';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 function Job() {
     // form handler
@@ -12,15 +11,12 @@ function Job() {
         })
         console.log(form);
     }
-
-    
-
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         await axios.post("http://localhost:2000/job/addJOB", form)
             .then((response) => {
                 console.log(response.data);
-                
+                setForm('');
             })
             .catch((err) => console.log(err));
     };
