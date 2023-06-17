@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../Job/job.css';
+import './addjob.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 function Job() {
@@ -24,7 +24,7 @@ function Job() {
             })
             .catch((err) => console.log(err));
     };
-    const navigateToJob = () =>{
+    const navigateToJob = () => {
         navigate('/Job');
     }
     return (
@@ -40,11 +40,11 @@ function Job() {
                         </div>
                         <div class="logpassword">
                             <div class="password">Password</div>
-                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br/></div>
+                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br /></div>
                         </div>
-                    </label><br/>                    
-                    <div class="forgot"><a href="http://localhost:3000/ForgotPassword">Forgot Password ?</a></div><br/>
-                    <button class="but1" type='submit' onClick={navigateToJob}>Login</button><br/><br/>
+                    </label><br />
+                    <div class="forgot"><a href="http://localhost:3000/ForgotPassword">Forgot Password ?</a></div><br />
+                    <button class="but1" type='submit' onClick={navigateToJob}>Login</button><br /><br />
                 </form>
             </div>
         </>

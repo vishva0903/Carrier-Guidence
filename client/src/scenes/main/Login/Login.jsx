@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../Login/userlogin.css';
+import './login.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-function UserLogin() {
+function Login() {
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -24,7 +24,7 @@ function UserLogin() {
             })
             .catch((err) => console.log(err));
     };
-    const navigateToLogin = () =>{
+    const navigateToLogin = () => {
         navigate('/Home');
     }
     return (
@@ -40,14 +40,14 @@ function UserLogin() {
                         </div>
                         <div class="logpassword">
                             <div class="password">Password</div>
-                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br/></div>
+                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br /></div>
                         </div>
-                    </label><br/>                    
-                    <div class="forgot"><a href="http://localhost:3000/ForgotPassword">Forgot Password ?</a></div><br/>
-                    <button class="but1" type='submit' onClick={navigateToLogin}>Login</button><br/><br/>
+                    </label><br />
+                    <div class="forgot"><a href="http://localhost:3000/ForgotPassword">Forgot Password ?</a></div><br />
+                    <button class="but1" type='submit' onClick={navigateToLogin}>Login</button><br /><br />
                 </form>
             </div>
         </>
     );
 }
-export default UserLogin;
+export default Login;

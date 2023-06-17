@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import '../Collegeform/collegeform.css';
+import './addCollege.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-function Collegeform() {
+function AddCollege() {
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -61,4 +61,4 @@ function Collegeform() {
         </>
     );
 }
-export default Collegeform;
+export default AddCollege;
