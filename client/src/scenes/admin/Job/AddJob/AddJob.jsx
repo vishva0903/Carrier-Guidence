@@ -13,38 +13,55 @@ function Job() {
         console.log(form);
     }
 
-    const navigate = useNavigate();
+    
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        await axios.post("http://localhost:3000/Job", form)
+        await axios.post("http://localhost:2000/job/addJOB", form)
             .then((response) => {
                 console.log(response.data);
-                navigate("/Job");
+                
             })
             .catch((err) => console.log(err));
     };
-    const navigateToJob = () => {
-        navigate('/Job');
-    }
+    
     return (
         <>
             <div class="loginbody">
                 <form className='signup-form' layout="vertical" onSubmit={onSubmitHandler}>
 
-                    <h1>Login</h1>
+                    <h1>Add Job</h1>
                     <label>
-                        <div class="logemail">
-                            <div class="Email">Email</div>
-                            <div class="Email1"><input type="text" name="Email" onChange={onChangeHandler} /><br></br></div>
+                        <div className="logjobTitle">
+                            <div className="jobTitle">Job Title</div>
+                            <div className="jobTitle1"><input type="text" name="jobTitle" onChange={onChangeHandler} /><br></br></div>
                         </div>
-                        <div class="logpassword">
-                            <div class="password">Password</div>
-                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br /></div>
+                        <div className="logcompanyName">
+                            <div className="companyName">Company Name</div>
+                            <div className="companyName1"><input type="text" name="companyName" onChange={onChangeHandler} /><br /></div>
+                        </div>
+                        <div className="logjobRequirements">
+                            <div className="jobRequirements">Job Requirements</div>
+                            <div className="jobRequirements1"><input type="text" name="jobRequirements" onChange={onChangeHandler} /><br /></div>
+                        </div>
+                        <div className="logsalaryPackage">
+                            <div className="salaryPackage">Salary Package</div>
+                            <div className="salaryPackage1"><input type="text" name="salaryPackage" onChange={onChangeHandler} /><br /></div>
+                        </div>
+                        <div className="logjobType">
+                            <div className="jobType">Job Type</div>
+                            <div className="jobType1"><input type="text" name="jobType" onChange={onChangeHandler} /><br /></div>
+                        </div>
+                        <div className="logcontactNumber">
+                            <div className="contactNumber">Contact Number</div>
+                            <div className="contactNumber1"><input type="text" name="contactNumber" onChange={onChangeHandler} /><br /></div>
+                        </div>
+                        <div className="logemail">
+                            <div className="email">Email</div>
+                            <div className="email1"><input type="text" name="email" onChange={onChangeHandler} /><br /></div>
                         </div>
                     </label><br />
-                    <div class="forgot"><a href="http://localhost:3000/ForgotPassword">Forgot Password ?</a></div><br />
-                    <button class="but1" type='submit' onClick={navigateToJob}>Login</button><br /><br />
+                    <button class="but1" type='submit' onClick={()=>onSubmitHandler}>Submit</button><br /><br />
                 </form>
             </div>
         </>
