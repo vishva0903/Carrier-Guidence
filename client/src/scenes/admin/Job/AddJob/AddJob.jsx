@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import './addjob.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 function Job() {
+
+    const navigate = useNavigate()
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -9,18 +12,18 @@ function Job() {
             ...form,
             [event.target.name]: event.target.value
         })
-        console.log(form);
     }
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         await axios.post("http://localhost:2000/job/addJOB", form)
             .then((response) => {
                 console.log(response.data);
-                setForm('');
+                setForm({});
+                navigate('/admin/viewjob')
             })
             .catch((err) => console.log(err));
     };
-    
+
     return (
         <>
             <div class="loginbody">
@@ -57,7 +60,7 @@ function Job() {
                             <div className="email1"><input type="text" name="email" onChange={onChangeHandler} /><br /></div>
                         </div>
                     </label><br />
-                    <button class="but1" type='submit' onClick={()=>onSubmitHandler}>Submit</button><br /><br />
+                    <button class="but1" type='submit' onClick={() => onSubmitHandler}>Submit</button><br /><br />
                 </form>
             </div>
         </>

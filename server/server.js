@@ -7,12 +7,14 @@ dotenv.config()
 app.use(cors())
 const port = process.env.PORT;
 const bodyParser = require('body-parser')
+const CourseRoute = require('./router/courserouter')
 const CollegeRouter = require('./router/collegerouter')
 const FeedbackRouter = require('./router/feebackrouter')
 const JobRouter = require('./router/jobrouter');
 const User = require('./router/user');
 app.use(bodyParser.json())
 
+app.use('/course', CourseRoute)
 app.use('/college', CollegeRouter)
 app.use('/feedback', FeedbackRouter)
 app.use('/job', JobRouter)
