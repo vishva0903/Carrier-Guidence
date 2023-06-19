@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { toast } from "react-toastify";
+
+
 function Login() {
     // form handler
     const [form, setForm] = useState({})
@@ -18,6 +21,7 @@ function Login() {
         event.preventDefault();
         await axios.post("http://localhost:5000/signin", form)
             .then((response) => {
+                toast.success("Login Succesfull")
                 const userRole = response.data.data.role
                 const token = response.data.token
                 console.log(userRole);
@@ -56,6 +60,8 @@ function Login() {
                         <input type="password" className="form-control" id="exampleInputPassword1" name='password' onChange={onChangeHandler} />
                     </div>
                     <button className="btn btn-primary" onClick={onSubmitHandler}> Login</button>
+                    <br />
+                    <Link to="/register">Dont have an account yet ?</Link>
                 </form>
             </div>
         </>

@@ -1,6 +1,11 @@
 import React, { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import axios from 'axios';
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+
+
+
 function UserLogin() {
     // form handler
     const [form, setForm] = useState({})
@@ -18,6 +23,7 @@ function UserLogin() {
         event.preventDefault();
         await axios.post("http://localhost:5000/signup", form)
             .then((response) => {
+                toast.success("Account Created")
                 console.log(response.data);
                 navigate("/login");
             })
@@ -40,7 +46,7 @@ function UserLogin() {
                             <div className="col">
                                 <div className="mb-3">
                                     <label className="form-label">Last Name</label>
-                                    <input type="text" className="form-control" name="lastName" onChange={onChangeHandler}/>
+                                    <input type="text" className="form-control" name="lastName" onChange={onChangeHandler} />
                                 </div>
                             </div>
                         </div>
@@ -57,19 +63,21 @@ function UserLogin() {
                             <div className="col">
                                 <div className="mb-3">
                                     <label className="form-label">Password</label>
-                                    <input type="password" className="form-control" name='password' onChange={onChangeHandler}/>
+                                    <input type="password" className="form-control" name='password' onChange={onChangeHandler} />
                                 </div>
                             </div>
                         </div>
 
                         <div className="row mb-2">
                             <div className='col'>
-                            <label className="form-label">Course studied in Higher Secondary</label>
-                                    <input type="text" className="form-control" name='courseStudied' onChange={onChangeHandler}/>
+                                <label className="form-label">Course studied in Higher Secondary</label>
+                                <input type="text" className="form-control" name='courseStudied' onChange={onChangeHandler} />
                             </div>
                         </div>
 
                         <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
+                        <br />
+                        <Link to="/login">Already have an account?</Link>
                     </form>
                 </div>
             </div>

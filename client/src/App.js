@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
+import Snackbar from './components/snackbar/SnackBar'
+
 // main
 import LandingPage from "./scenes/main/LandingPage/LandingPage"
 import Login from "./scenes/main/Login/Login"
@@ -24,6 +26,7 @@ import AddFeedback from "./scenes/user/Feedback/AddFeedback/AddFeedback"
 function App() {
   return (
     <>
+      <Snackbar />
       <BrowserRouter>
         <Routes>
 
