@@ -1,41 +1,67 @@
 import React from 'react'
 import './viewjob.css'
-import { DataGrid } from "@mui/x-data-grid";
+import Table from 'react-bootstrap/Table';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 import uuid from "react-uuid"
 
 function ViewJob() {
 
-  const [rows, setRows] = React.useState({});
-  async function setRow() {
-    await axios
-      .get(`http://localhost:2000/job/getJOB`)
-      .then((res) => {
-        setRows(res.data.result);
-        console.log(res.data.result);
+  // const [rows, setRows] = React.useState({});
+  // async function setRow() {
+  //   await axios
+  //     .get(`http://localhost:2000/job/getJOB`)
+  //     .then((res) => {
+  //       setRows(res.data.result);
+  //       console.log(res.data.result);
 
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }
-  React.useEffect(() => {
-    setRow();
-  }, []);
+  //     })
+  //     .catch((err) => {
+  //       console.error(err);
+  //     });
+  // }
+  // React.useEffect(() => {
+  //   setRow();
+  // }, []);
 
 
-  const columns = [
-    { field: "_id", headerName: "Id", width: 300, hideable: false, hide: true },
-    { field: "jobTitle", headerName: "jobTitle", width: 300 },
-    { field: "companyName", headerName: "companyName", width: 350 },
-    { field: "jobRequirements", headerName: "jobRequirements", width: 300 },
-  ]
 
 
   return (
     <div className='admin-viewjob'>
-      <div className="admin-table">
-        <DataGrid rows={rows} columns={columns} getRowId={(row: any) => uuid()} />
+      <div className='center-jobtable'>
+        <div>
+          <Table striped bordered hover variant="dark">
+            <thead>
+              <tr>
+                <th>SI.No</th>
+                <th>Job Title</th>
+                <th>Company Name</th>
+                <th>Job Requirements</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Larry the Bird</td>
+                <td>@twitter12</td>
+                <td>@twitter</td>
+              </tr>
+            </tbody>
+          </Table>
+        </div>
       </div>
     </div>
   )

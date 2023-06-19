@@ -18,6 +18,9 @@ import ViewCollege from "./scenes/admin/College/ViewCollege/ViewCollege"
 
 
 // user
+// import AddFeedback from "./scenes/user/UserFeed/AddFeedback"
+import College from "./scenes/user/Colleges/Colleges"
+import AddFeedback from "./scenes/user/Feedback/AddFeedBack/AddFeedback"
 
 function App() {
   return (
@@ -38,11 +41,13 @@ function App() {
             <Route path="AddCourse" element={<AddCourse />} />
             <Route path="ViewCourse" element={<ViewCourse />} />
             <Route path="AddCollege" element={<AddCollege />} />
-            <Route path="ViewCollege" element={<ViewCollege />} />
+            <Route path="ViewColAddFeedbacklege" element={<ViewCollege />} />
           </Route>
 
           {/* user */}
           <Route path="/user">
+            <Route index element={<College />} />
+            <Route path="AddFeedback" element={<AddFeedback />} />
 
           </Route>
         </Routes>
