@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './register.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 function UserLogin() {
@@ -17,49 +16,62 @@ function UserLogin() {
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
-        await axios.post("http://localhost:3000/SignUp", form)
+        await axios.post("http://localhost:5000/signup", form)
             .then((response) => {
                 console.log(response.data);
-                navigate("/Signup");
+                navigate("/login");
             })
             .catch((err) => console.log(err));
     };
-    const navigateToSignup = () => {
-        navigate("/UserLogin");
-    };
     return (
         <>
-            <div class="loginbody">
-                <form className='signup-form' layout="vertical" onSubmit={onSubmitHandler}>
+            <div className="container mb-5">
+                <div className="shadow p-4 mt-5 bg-body-tertiary rounded">
+                    <form>
+                        <h1 className="display-5 mb-4">Register</h1>
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">First Name</label>
+                                    <input type="text" className="form-control" name="firstName" onChange={onChangeHandler} />
+                                </div>
+                            </div>
 
-                    <h1>Sign Up</h1>
-                    <label>
-                        <div class="logfirstname">
-                            <div class="firstName">FirstName</div>
-                            <div class="firstName1"><input type="text" name="firstName" onChange={onChangeHandler} /><br></br></div>
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Last Name</label>
+                                    <input type="text" className="form-control" name="lastName" onChange={onChangeHandler}/>
+                                </div>
+                            </div>
                         </div>
-                        <div class="loglastname">
-                            <div class="lastName">LastName</div>
-                            <div class="lastName1"><input type="text" name="lastName" onChange={onChangeHandler} /><br></br></div>
-                        </div>
-                        <div class="logemail">
-                            <div class="Email">Email</div>
-                            <div class="Email1"><input type="text" name="Email" onChange={onChangeHandler} /><br></br></div>
-                        </div>
-                        <div class="logpassword">
-                            <div class="password">Password</div>
-                            <div className="password1"><input type="password" name="password" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                        <div class="coursestud">
-                            <div class="coursestudied">Course Studied in 12th</div>
-                            <div className="coursestudied1"><input type="text" name="coursestud" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                    </label><br />
-                    <button class="but1" type='submit' onClick={navigateToSignup}>Sign Up</button><br /><br />
-                    <div class="lhead">Are you already have an account ?</div>
-                    <div class="signuplnk"><a href="http://localhost:3000/Signup">Sign up</a></div>
 
-                </form>
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Email address</label>
+                                    <input type="email" className="form-control" name='email' onChange={onChangeHandler} />
+                                    <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Password</label>
+                                    <input type="password" className="form-control" name='password' onChange={onChangeHandler}/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row mb-2">
+                            <div className='col'>
+                            <label className="form-label">Course studied in Higher Secondary</label>
+                                    <input type="text" className="form-control" name='courseStudied' onChange={onChangeHandler}/>
+                            </div>
+                        </div>
+
+                        <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
+                    </form>
+                </div>
             </div>
         </>
     );

@@ -7,7 +7,7 @@ import Button from 'react-bootstrap/Button';
 
 
 
-function ViewCourse() {
+function ViewCollege() {
 
     // const [rows, setRows] = React.useState({});
     // async function setRow() {
@@ -31,42 +31,78 @@ function ViewCourse() {
 
 
     return (
-        <div className='admin-viewcollege'>
-            <div className='center-table'>
-                <div>
-                    <Table striped bordered hover variant="dark">
-                        <thead>
-                            <tr>
-                                <th>SI.No</th>
-                                <th>College Name</th>
-                                <th>Place</th>
-                                <th>Address</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Larry the Bird</td>
-                                <td>@twitter1234</td>
-                                <td>@twitter</td>
-                            </tr>
-                        </tbody>
-                    </Table>
-                </div>
+        <div className="container mt-5 p-1">
+            <div className="row mb-4 justify-content-between">
+                <h3 className="col-md-6">My Listed Ads</h3>
+                <button type="button" className="col-md-2 btn btn-primary btn-sm" onclick="navigateToPage()">Add a College</button>
             </div>
+            <table className="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Location</th>
+                    <th>Rate</th>
+                    <th>Area</th>
+                    <th>Action</th>
+                </tr>
+
+                <tr>
+                    <td>1</td>
+                    <td>Nedumangad</td>
+                    <td>1 Core</td>
+                    <td>10 cent</td>
+                    <td>
+                        <div className="btn-group" role="group">
+
+                            <button type="button" className="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i className="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" className="btn btn-danger  btn-sm"><i className="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Nedumangad</td>
+                    <td>2 Core</td>
+                    <td>20 cent</td>
+                    <td>
+                        <div className="btn-group" role="group">
+                            <button type="button" className="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i className="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" className="btn btn-danger  btn-sm"><i className="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Trivandrum</td>
+                    <td>5 Core</td>
+                    <td>5 cent</td>
+                    <td>
+                        <div className="btn-group" role="group">
+                            <button type="button" className="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i className="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" className="btn btn-danger  btn-sm"><i className="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Palayam</td>
+                    <td>1 Core</td>
+                    <td>10 cent</td>
+                    <td>
+                        <div className="btn-group" role="group">
+                            <button type="button" className="btn btn-warning btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal"><i className="fa-solid fa-pen-to-square"></i></button>
+                            <button type="button" className="btn btn-danger  btn-sm"><i className="fa-solid fa-trash"></i></button>
+                        </div>
+                    </td>
+                </tr>
+            </table>
         </div>
     )
 }
-export default ViewCourse
+export default ViewCollege

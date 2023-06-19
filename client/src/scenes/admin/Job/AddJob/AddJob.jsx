@@ -13,9 +13,9 @@ function Job() {
             [event.target.name]: event.target.value
         })
     }
-    const onSubmitHandler = async (event) => {
-        event.preventDefault();
-        await axios.post("http://localhost:2000/job/addJOB", form)
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:5000/job/addJOB", form)
             .then((response) => {
                 console.log(response.data);
                 setForm({});
@@ -26,42 +26,74 @@ function Job() {
 
     return (
         <>
-            <div class="loginbody">
-                <form className='signup-form' layout="vertical" onSubmit={onSubmitHandler}>
+            {/* <!-- register form --> */}
+            <div className="container mb-5">
+                <div className="shadow p-4 mt-5 bg-body-tertiary rounded">
+                    <form>
+                        <h1 className="display-5 mb-4">Post a Job</h1>
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Job Title</label>
+                                    <input type="text" className="form-control" name="jobTitle" onChange={onChangeHandler} />
+                                </div>
+                            </div>
 
-                    <h1>Add Job</h1>
-                    <label>
-                        <div className="logjobTitle">
-                            <div className="jobTitle">Job Title</div>
-                            <div className="jobTitle1"><input type="text" name="jobTitle" onChange={onChangeHandler} /><br></br></div>
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Company Name</label>
+                                    <input type="text" className="form-control" name="companyName" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="logcompanyName">
-                            <div className="companyName">Company Name</div>
-                            <div className="companyName1"><input type="text" name="companyName" onChange={onChangeHandler} /><br /></div>
+
+                        <div className="row">
+                            <div className="col">
+
+
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label className="form-label">Email</label>
+                                        <input type="email" className="form-control" name="email" onChange={onChangeHandler} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Salary Package</label>
+                                    <input type="text" className="form-control" name="salaryPackage" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="logjobRequirements">
-                            <div className="jobRequirements">Job Requirements</div>
-                            <div className="jobRequirements1"><input type="text" name="jobRequirements" onChange={onChangeHandler} /><br /></div>
+
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Job Type</label>
+                                    <input type="text" className="form-control" name='jobType' onChange={onChangeHandler} />
+
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Contact No</label>
+                                    <input type="text" className="form-control" name="contactNumber" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="logsalaryPackage">
-                            <div className="salaryPackage">Salary Package</div>
-                            <div className="salaryPackage1"><input type="text" name="salaryPackage" onChange={onChangeHandler} /><br /></div>
+
+                        <div className="row">
+                            <div className="mb-3">
+                                <label className="form-label">Job Requiements</label>
+                                <input type="textarea" className="form-control" name="jobRequirements" onChange={onChangeHandler} />
+                            </div>
                         </div>
-                        <div className="logjobType">
-                            <div className="jobType">Job Type</div>
-                            <div className="jobType1"><input type="text" name="jobType" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                        <div className="logcontactNumber">
-                            <div className="contactNumber">Contact Number</div>
-                            <div className="contactNumber1"><input type="text" name="contactNumber" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                        <div className="logemail">
-                            <div className="email">Email</div>
-                            <div className="email1"><input type="text" name="email" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                    </label><br />
-                    <button class="but1" type='submit' onClick={() => onSubmitHandler}>Submit</button><br /><br />
-                </form>
+
+                        <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
+                    </form>
+                </div>
             </div>
         </>
     );
