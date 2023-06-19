@@ -4,8 +4,8 @@ const router = express.Router()
 const CourseController = require('../controller/courseController')
 
 router.post('/addCourse/:id', CourseController.addCourse)
-// router.get('/getCOLLEGE',Collegecontroller.getcollege)
-// router.get('/getcollegebyid/:id',Collegecontroller.getcollegebyid)
+router.get('/getCourse', CourseController.getAllCourses)
+router.get('/getCourseByCollege/:id', CourseController.getCourseByCollege)
 // router.put('/putCOLLEGE/:id',Collegecontroller.updatecollege)
 // router.delete('/deleteCOLLEGE/:id',Collegecontroller.deletecollege)
 

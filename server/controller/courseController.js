@@ -1,88 +1,122 @@
-const Course = require("../model/courseschema")
+const College = require('../model/courseschema')
 module.exports = {
     addCourse: async (req, res) => {
+        const { id } = req.params; // Assuming collegeId is passed as a parameter in the request
         const { courseName, duration, courseFee, subjects } = req.body;
-        const { id } = req.params; // Fixed the typo
-        console.log(id)
-
+        console.log(id, courseName)
         try {
-            // Find the college document with the given ID
-            const college = await Course.findById(id);
+            const college = await College.findById(id);
 
             if (!college) {
                 return res.status(404).json({ error: 'College not found' });
             }
 
-            // Create a new course document
-            const newCourse = new Course({
+            const newCourse = {
                 courseName,
                 duration,
                 courseFee,
                 subjects,
-                college: college._id // Set the reference to the college
-            });
+            };
 
-            // Save the course document
-            const savedCourse = await newCourse.save();
+            college.courses.push(newCourse); // Add the new course to the courses array
 
-            // Add the course ID to the college's courses array
-            college.courses.push(savedCourse._id);
-            await college.save();
+            await college.save(); // Save the updated college
 
-            res.status(200).json(savedCourse);
-        } catch (err) {
-            res.status(400).json({ error: err.message });
+            res.status(201).json({ message: 'Course added successfully', course: newCourse });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Server error' });
         }
     },
 
-    // getcollege: async (req, res) => {
-    //     const id = req.params.id
-    //     try {
-    //         const result2 = await College.find()
-    //         res.status(200).json({ result2 });
-    //     }
-    //     catch (err) {
-    //         res.status(400).json({ err });
-    //     }
+    getAllCourses: async (req, res) => {
+        try {
+            const colleges = await College.find({});
+            const courses = [];
+
+            colleges.forEach(college => {
+                courses.push(...college.courses);
+            });
+
+            res.status(200).json({ courses });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Server error' });
+        }
+    },
+
+    getCourseByCollege: async (req, res) => {
+        const { id } = req.params; // Assuming collegeId is passed as a parameter in the request
+        try {
+            const college = await College.findById(id);
+            if (!college) {
+                return res.status(404).json({ error: 'College not found' });
+            }
+            const courses = college.courses;
+
+            res.status(200).json({ courses });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Server error' });
+        }
+    },
+
+    updateCourse: async (req, res) => {
+        const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
+        const { courseName, duration, courseFee, subjects } = req.body;
+
+        try {
+            const college = await College.findById(collegeId);
+
+            if (!college) {
+                return res.status(404).json({ error: 'College not found' });
+            }
+
+            const course = college.courses.id(courseId); // Find the course in the courses array by its ID
+
+            if (!course) {
+                return res.status(404).json({ error: 'Course not found' });
+            }
+
+            // Update the course details
+            course.courseName = courseName || course.courseName;
+            course.duration = duration || course.duration;
+            course.courseFee = courseFee || course.courseFee;
+            course.subjects = subjects || course.subjects;
+
+            await college.save(); // Save the updated college
+
+            res.status(200).json({ message: 'Course updated successfully', course });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Server error' });
+        }
+    },
 
 
-    // },
+    deleteCourse: async (req, res) => {
+        const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
 
-    // getcollegebyid: async (req, res) => {
-    //     const id = req.params.id
-    //     try {
-    //         const result3 = await College.findById(id)
-    //         res.status(200).json({ result3 });
-    //     }
-    //     catch (err) {
-    //         res.status(400).json({ err });
-    //     }
+        try {
+            const college = await College.findById(collegeId);
 
+            if (!college) {
+                return res.status(404).json({ error: 'College not found' });
+            }
 
-    // },
-    // updatecollege: async (req, res) => {
-    //     const id = req.params.id
-    //     try {
-    //         await College.findByIdAndUpdate(id, {
-    //             Name: req.body.Name
-    //         });
-    //         res.status(200).json("success");
-    //     }
-    //     catch (err) {
-    //         res.status(400).json({ err });
-    //     }
+            const course = college.courses.id(courseId); // Find the course in the courses array by its ID
 
-    // },
-    // deletecollege: async (req, res) => {
-    //     const id = req.params.id
-    //     try {
-    //         await College.findByIdAndDelete(id)
-    //         res.status(200).json("success");
-    //     }
-    //     catch (err) {
-    //         res.status(400).json({ err });
-    //     }
+            if (!course) {
+                return res.status(404).json({ error: 'Course not found' });
+            }
 
-    // }
+            course.remove(); // Remove the course from the courses array
+
+            await college.save(); // Save the updated college
+
+            res.status(200).json({ message: 'Course deleted successfully' });
+        } catch (error) {
+            console.error(error);
+        }
+    }
 }
-
