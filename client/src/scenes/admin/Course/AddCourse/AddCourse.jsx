@@ -12,16 +12,19 @@ function AddCourse() {
             [event.target.name]: event.target.value
         })
     }
-    const onSubmitHandler = async (e) => {
+    const onSubmitHandler = async (e, postId) => {
         e.preventDefault();
-        await axios.post("http://localhost:5000/AddCourse/addCourse", form)
-            .then((response) => {
-                console.log(response.data);
-                setForm({});
-                navigate('/admin/viewCourse')
-            })
-            .catch((err) => console.log(err));
-    };
+        // const postId = '64916788e6bfdeb9a7018a0a';
+
+        await axios.post(`http://localhost:5000/course/addCourse/${postId}`, form)
+          .then((response) => {
+            console.log(response.data);
+            setForm({});
+            navigate('/admin/viewCourse');
+          })
+          .catch((err) => console.log(err));
+      };
+    
 
     return (
         <>
@@ -53,7 +56,7 @@ function AddCourse() {
                                 <div className="col">
                                     <div className="mb-3">
                                         <label className="form-label">Course Fee</label>
-                                        <input type="Number" className="form-control" name="courseFee" onChange={onChangeHandler} />
+                                        <input type="text" className="form-control" name="courseFee" onChange={onChangeHandler} />
                                     </div>
                                 </div>
                             </div>
@@ -61,7 +64,7 @@ function AddCourse() {
                             <div className="col">
                                 <div className="mb-3">
                                     <label className="form-label">Subjects</label>
-                                    <input type="Number" className="form-control" name="subjects" onChange={onChangeHandler} />
+                                    <input type="text" className="form-control" name="subjects" onChange={onChangeHandler} />
                                 </div>
                             </div>
                         </div>

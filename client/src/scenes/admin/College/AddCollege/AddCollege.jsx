@@ -14,7 +14,7 @@ function AddCollege() {
     }
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        await axios.post("http://localhost:5000/AddCollege/addCOLLEGE", form)
+        await axios.post("http://localhost:5000/college/addCOLLEGE", form)
             .then((response) => {
                 console.log(response.data);
                 setForm({});
