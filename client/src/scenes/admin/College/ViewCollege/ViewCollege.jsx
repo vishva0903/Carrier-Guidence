@@ -6,7 +6,10 @@ import Modal from 'react-bootstrap/Modal';
 
 
 
+function navigateToPage(pageUrl) {
 
+  window.location.href = pageUrl;
+}
 
 function ViewCollege() {
     const [rows, setRows] = useState([])
@@ -74,7 +77,22 @@ function ViewCollege() {
         })
     }
 
+    // deleting
+    async function Delete(id) {
+        await axios
+            .delete(`http://localhost:5000/college/deleteCOLLEGE/${id}`)
+            .then((res) => {
+                setRow()
+                alert("Deleted")
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
 
+    React.useEffect(() => {
+        setRow();
+    }, []);
 
     return (
         <div>
@@ -204,3 +222,6 @@ function ViewCollege() {
     )
 }
 export default ViewCollege
+
+
+

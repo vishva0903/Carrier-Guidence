@@ -1,69 +1,104 @@
 import React from 'react'
 import './viewCourse.css'
-import Table from 'react-bootstrap/Table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { DataGrid } from "@mui/x-data-grid";
 import axios from 'axios'
-import uuid from "react-uuid"
+
+function navigateToPage(pageUrl) {
+
+  window.location.href = pageUrl;
+}
 
 function ViewCourse() {
 
-  // const [rows, setRows] = React.useState({});
-  // async function setRow() {
-  //   await axios
-  //     .get(`http://localhost:2000/job/getJOB`)
-  //     .then((res) => {
-  //       setRows(res.data.result);
-  //       console.log(res.data.result);
+    const [rows, setRows] = React.useState([]);
+    async function setRow() {
+        await axios
+            .get(`http://localhost:5000/course/getCourse`)
+            .then((res) => {
+                setRows(res.data.courses);
+                console.log(res.data);
 
-  //     })
-  //     .catch((err) => {
-  //       console.error(err);
-  //     });
-  // }
-  // React.useEffect(() => {
-  //   setRow();
-  // }, []);
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
 
+    // deleting
+    async function Delete(id) {
+        await axios
+            .delete(`http://localhost:5000/college/deleteCOLLEGE/${id}`)
+            .then((res) => {
+                setRow()
+                alert("Deleted")
+            })
+            .catch((err) => {
+                console.error(err);
+            });
+    }
 
-  return (
-    <div className='admin-viewcourse'>
-      <div className='center-coursetable'>
-        <div>
-          <Table striped bordered hover variant="dark">
-            <thead>
-              <tr>
-                <th>SI.No</th>
-                <th>Course Name</th>
-                <th>Duration</th>
-                <th>Course Fee</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry the Bird</td>
-                <td>@twitter123</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </Table>
+    React.useEffect(() => {
+        setRow();
+    }, []);
+
+    return (
+        <div className="container mt-5 p-1">
+            <div className="row mb-4 justify-content-between">
+                <h3 className="col-md-6">List of Courses</h3>
+                <button type="button" className="col-md-2 btn btn-primary btn-sm" onClick={() => navigateToPage('/admin/addCourse')}>Add a Course</button>
+            </div>
+
+            <table className="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Course Name</th>
+                        <th>Duration</th>
+                        <th>Course Fee</th>
+                        <th>Subjects</th>
+                        <th>Email</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {
+                        rows.map((item, val) => {
+                            return (
+                                <tr key={val}>
+                                    <td>
+                                        {rows.indexOf(item) + 1}
+                                    </td>
+                                    <td>
+                                        {item.courseName}
+                                    </td>
+                                    <td>
+                                        {item.duration}
+                                    </td>
+                                    <td>
+                                        {item.courseFee}
+                                    </td>
+                                    <td>
+                                        {item.subjects}
+                                    </td>
+                                    <td>
+                                        <div class="btn-group" role="group">
+                                            {/* <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" */}
+                                            {/* data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button> */}
+                                            <button class="btn btn-danger  btn-sm" onClick={() => Delete(item._id)}><i class="fa-solid fa-trash"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+
         </div>
-      </div>
-    </div>
-  )
+    )
 }
-
 export default ViewCourse
+
+
+
