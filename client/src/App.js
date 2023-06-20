@@ -21,7 +21,7 @@ import ViewCollege from "./scenes/admin/College/ViewCollege/ViewCollege"
 
 // user
 import College from "./scenes/user/Colleges/Colleges"
-import AddFeedback from "./scenes/user/Feedback/AddFeedback/AddFeedback"
+import AddFeedback from "./scenes/user/Feedback/AddFeedBack/AddFeedback"
 
 function App() {
   return (
@@ -50,7 +50,6 @@ function App() {
           <Route path="/user">
             <Route index element={<College />} />
             <Route path="AddFeedback" element={<AddFeedback />} />
-
           </Route>
         </Routes>
       </BrowserRouter>

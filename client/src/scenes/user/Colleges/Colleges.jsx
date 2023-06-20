@@ -19,7 +19,7 @@ function Colleges() {
 
   // handling modal
   const [show, setShow] = useState(false);
-  const [accordionData, setAccordionData] = useState();
+  const [accordionData, setAccordionData] = useState([]);
 
   const handleClose = () => setShow(false);
 

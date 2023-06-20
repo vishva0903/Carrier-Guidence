@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './addjob.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 function Job() {
@@ -91,7 +90,7 @@ function Job() {
                             </div>
                         </div>
 
-                        <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
+                        <button className="btn btn-primary" onClick={onSubmitHandler} Link to="/viewJob">Submit</button>
                     </form>
                 </div>
             </div>

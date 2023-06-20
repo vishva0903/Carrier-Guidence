@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import './addCourse.css';
-import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'
 function AddCourse() {
+
+    const navigate = useNavigate()
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -10,49 +11,63 @@ function AddCourse() {
             ...form,
             [event.target.name]: event.target.value
         })
-        console.log(form);
     }
-
-    const navigate = useNavigate();
-
-    const onSubmitHandler = async (event) => {
-        event.preventDefault();
-        await axios.post("http://localhost:3000/Courseform", form)
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:5000/AddCourse/addCourse", form)
             .then((response) => {
                 console.log(response.data);
-                navigate("/AddCourse");
+                setForm({});
+                navigate('/admin/viewCourse')
             })
             .catch((err) => console.log(err));
     };
-    const navigateToViewCourse = () => {
-        navigate("/admin/ViewCourse");
-    };
+
     return (
         <>
-            <div class="loginbody">
-                <form className='signup-form' layout="vertical" onSubmit={onSubmitHandler}>
+            {/* <!-- register form --> */}
+            <div className="container mb-5">
+                <div className="shadow p-4 mt-5 bg-body-tertiary rounded">
+                    <form>
+                        <h1 className="display-5 mb-4">Add a Course</h1>
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Course Name</label>
+                                    <input type="text" className="form-control" name="courseName" onChange={onChangeHandler} />
+                                </div>
+                            </div>
 
-                    <h1>Course Form</h1>
-                    <label>
-                        <div class="logcourseName">
-                            <div class="courseName">Course Name</div>
-                            <div class="courseName1"><input type="text" name="courseName" onChange={onChangeHandler} /><br></br></div>
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Duration</label>
+                                    <input type="text" className="form-control" name="duration" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div class="logduration">
-                            <div class="duration">Duration</div>
-                            <div class="duration1"><input type="text" name="duration" onChange={onChangeHandler} /><br></br></div>
+
+                        <div className="row">
+                            <div className="col">
+
+
+                                <div className="col">
+                                    <div className="mb-3">
+                                        <label className="form-label">Course Fee</label>
+                                        <input type="Number" className="form-control" name="courseFee" onChange={onChangeHandler} />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Subjects</label>
+                                    <input type="Number" className="form-control" name="subjects" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div class="logcourseFee">
-                            <div class="courseFee">Course Fee</div>
-                            <div class="courseFee1"><input type="text" name="courseFee" onChange={onChangeHandler} /><br></br></div>
-                        </div>
-                        <div class="logsubjects">
-                            <div class="subjects">Subjects</div>
-                            <div className="subjects1"><input type="text" name="subjects" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                    </label><br />
-                    <button class="but1" type='submit' onClick={navigateToViewCourse}>Submit</button><br /><br />
-                </form>
+                        <button className="btn btn-primary" onClick={onSubmitHandler} Link to="/viewCourse">Submit</button>
+                    </form>
+                </div>
             </div>
         </>
     );
