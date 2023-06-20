@@ -20,7 +20,7 @@ function Feedback() {
             })
             .catch((err) => console.log(err));
     };
-    
+
     return (
         <>
             <div class="loginbody">
@@ -37,7 +37,7 @@ function Feedback() {
                             <div className="description1"><input type="textarea" name="description" onChange={onChangeHandler} /><br /></div>
                         </div>
                     </label><br />
-                    <button class="but1" type='submit' onClick={()=>onSubmitHandler}>Submit</button><br /><br />
+                    <button class="but1" type='submit' onClick={() => onSubmitHandler}>Submit</button><br /><br />
                 </form>
             </div>
         </>
