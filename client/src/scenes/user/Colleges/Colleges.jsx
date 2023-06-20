@@ -40,7 +40,7 @@ function Colleges() {
     <div className="container mt-5 p-1">
       <div className="row mb-4 justify-content-between">
         <h3 className="col-md-6">Colleges</h3>
-        <p>Find your perfect campus</p>
+        <p>Find Your Perfect Campus</p>
       </div>
 
 
@@ -53,11 +53,10 @@ function Colleges() {
                 <Card style={{ width: '18rem' }}>
                   <Card.Body>
                     <Card.Title>{item.collegeName}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                    <Card.Text>
-                      Some quick example text to build on the card title and make up the
-                      bulk of the card's content.
-                    </Card.Text>
+                    <Card.Text>{item.place}</Card.Text>
+                    <Card.Text>{item.address}</Card.Text>
+                    <Card.Text>{item.contactNumber}</Card.Text>
+                    <Card.Text>{item.email}</Card.Text>
                     <button onClick={() => FetchCourse(item)} className='btn btn-primary btn-sm w-100'>Available Courses</button>
                   </Card.Body>
                 </Card>
@@ -86,13 +85,9 @@ function Colleges() {
                         <Accordion.Item eventKey={val}>
                           <Accordion.Header>{item.courseName}</Accordion.Header>
                           <Accordion.Body>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-                            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                            aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
+                            <p>{item.duration}</p>
+                            <p>{item.courseFee}</p>
+                            <p>{item.subjects}</p>
                           </Accordion.Body>
                         </Accordion.Item>
                       </>

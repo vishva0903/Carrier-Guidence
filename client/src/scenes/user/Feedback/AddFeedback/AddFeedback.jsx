@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import './addFeedback.css';
 import axios from 'axios';
-function Feedback() {
+import { toast } from "react-toastify";
+function AddFeedback() {
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -9,38 +9,46 @@ function Feedback() {
             ...form,
             [event.target.name]: event.target.value
         })
-        console.log(form);
     }
-    const onSubmitHandler = async (event) => {
-        event.preventDefault();
-        await axios.post("http://localhost:2000/job/addFeedback", form)
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
+        await axios.post("http://localhost:5000/feedback/addFEEDBACK", form)
             .then((response) => {
+                toast.success("Feedback Succesfull")
                 console.log(response.data);
-                setForm('');
+                setForm({});
+                
             })
             .catch((err) => console.log(err));
     };
 
     return (
         <>
-            <div class="loginbody">
-                <form className='signup-form' layout="vertical" onSubmit={onSubmitHandler}>
+            {/* <!-- register form --> */}
+            <div className="container mb-5">
+                <div className="shadow p-4 mt-5 bg-body-tertiary rounded">
+                    <form>
+                        <h1 className="display-5 mb-4">Add a Feedback</h1>
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Name</label>
+                                    <input type="text" className="form-control" name="name" onChange={onChangeHandler} />
+                                </div>
+                            </div>
 
-                    <h1>Add Job</h1>
-                    <label>
-                        <div className="logfeedback">
-                            <div className="feedback">Name</div>
-                            <div className="feedback1"><input type="text" name="name" onChange={onChangeHandler} /><br></br></div>
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Description</label>
+                                    <input type="textarea" className="form-control" name="description" onChange={onChangeHandler} />
+                                </div>
+                            </div>
                         </div>
-                        <div className="logdescription">
-                            <div className="description">Description</div>
-                            <div className="description1"><input type="textarea" name="description" onChange={onChangeHandler} /><br /></div>
-                        </div>
-                    </label><br />
-                    <button class="but1" type='submit' onClick={() => onSubmitHandler}>Submit</button><br /><br />
-                </form>
+                        <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
+                    </form>
+                </div>
             </div>
         </>
     );
 }
-export default Feedback;
+export default AddFeedback;

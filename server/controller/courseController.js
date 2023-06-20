@@ -3,7 +3,7 @@ module.exports = {
     addCourse: async (req, res) => {
         const { id } = req.params; // Assuming collegeId is passed as a parameter in the request
         const { courseName, duration, courseFee, subjects } = req.body;
-        console.log(id, courseName)
+        console.log("demo console" + id, courseName, duration, courseFee, subjects)
         try {
             const college = await College.findById(id);
 

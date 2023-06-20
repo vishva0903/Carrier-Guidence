@@ -90,7 +90,7 @@ function Job() {
                             </div>
                         </div>
 
-                        <button className="btn btn-primary" onClick={onSubmitHandler} Link to="/viewJob">Submit</button>
+                        <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
                     </form>
                 </div>
             </div>

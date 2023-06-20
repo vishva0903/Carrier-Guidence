@@ -23,6 +23,7 @@ import ViewCollege from "./scenes/admin/College/ViewCollege/ViewCollege"
 import College from "./scenes/user/Colleges/Colleges"
 import AddFeedback from "./scenes/user/Feedback/AddFeedback/AddFeedback"
 
+
 function App() {
   return (
     <>

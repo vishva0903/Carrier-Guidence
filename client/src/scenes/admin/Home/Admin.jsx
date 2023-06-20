@@ -1,5 +1,4 @@
 import React from 'react';
-import './admin.css';
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 function Admin() {
@@ -32,15 +31,14 @@ function Admin() {
                 <form>
 
                     <h1>Admin</h1>
-                    <button class="but1" type='submit' onClick={navigateToCollege}>College</button>
-                    <button class="but1" type='submit' onClick={navigateToJob}>Job</button>
-                    <button class="but1" type='submit' onClick={navigateTofCourse}>Course</button>
-                    <button class="but1" type='submit' onClick={navigateTofeedback}>View Feedback</button><br /><br /><br /><br />
+                    <button className="btn btn-primary" onClick={navigateToCollege}>College</button>
+                    <button className="btn btn-primary" onClick={navigateToJob}>Job</button>
+                    <button className="btn btn-primary" onClick={navigateTofeedback}>View Feedback</button>
+                    <button className="btn btn-primary" onClick={navigateTofCourse}>Course</button>
                 </form>
             </div>
         </>
-    );
+    )
 }
-export default Admin;
 
-//ready
+export default Admin
