@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import Snackbar from './components/snackbar/SnackBar'
-import NavBar from './components/NavBar'
+import NavBar from './components/Navbar/NavBar'
 
 // main
 import LandingPage from "./scenes/main/LandingPage/LandingPage"
@@ -29,9 +29,10 @@ function App() {
   return (
     <>
 
-      <NavBar />
-      <Snackbar />
+
       <BrowserRouter>
+        <NavBar />
+        <Snackbar />
         <Routes>
 
           {/* main */}
@@ -47,7 +48,7 @@ function App() {
             <Route path="ViewCourse" element={<ViewCourse />} />
             <Route path="AddCollege" element={<AddCollege />} />
             <Route path="viewCollege" element={<ViewCollege />} />
-            <Route path="Viewfeedback" element={<Viewfeedback/>} />
+            <Route path="Viewfeedback" element={<Viewfeedback />} />
           </Route>
 
           {/* user */}
@@ -55,7 +56,7 @@ function App() {
             <Route index element={<College />} />
             <Route path="AddFeedback" element={<AddFeedback />} />
             <Route path="ViewJob" element={<ViewJobs />} />
-          </Route>  
+          </Route>
         </Routes>
       </BrowserRouter>
     </>

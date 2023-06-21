@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { setUser, setAdmin } from '../../../store/auth';
+import { useDispatch } from 'react-redux';
 import { toast } from "react-toastify";
 
 
 function Login() {
+    const dispatch = useDispatch()
     // form handler
     const [form, setForm] = useState({})
     const onChangeHandler = (event) => {
@@ -28,11 +31,13 @@ function Login() {
                 localStorage.setItem('token', JSON.stringify(token))
                 switch (userRole) {
                     case 'user':
+                        dispatch(setUser())
                         navigate('/user')
                         break;
 
 
                     case 'admin':
+                        dispatch(setAdmin())
                         navigate('/admin')
                         break;
 

@@ -1,6 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
 const initialState = {
     id: '',
     isLoggedIn: false,
@@ -20,8 +19,11 @@ export const LoginedUserSlice = createSlice({
         isNotLoggedIn: (state) => {
             state.isLoggedIn = false
         },
-        loginRole: (state, action) => {
-            state.role = action.payload
+        setUser: (state, action) => {
+            state.role = 'user'
+        },
+        setAdmin: (state, action) => {
+            state.role = 'admin'
         },
         logout: (state) => {
             state.user = ''
@@ -32,6 +34,6 @@ export const LoginedUserSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { loggedUser, isLoggedIn, isNotLoggedIn, loginRole, logout } = LoginedUserSlice.actions
+export const { loggedUser, isLoggedIn, isNotLoggedIn, setUser,setAdmin, logout } = LoginedUserSlice.actions
 
 export default LoginedUserSlice.reducer

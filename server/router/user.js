@@ -11,6 +11,7 @@ router.post("/signin", UserController.signin);
 router.post('/auth', UserController.verifyToken)
 router.get(`/getuser/:id`,UserController.getUser)
 
+// router.post("/logout", UserController.logout);
 
 
 
