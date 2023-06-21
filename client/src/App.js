@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
 import Snackbar from './components/snackbar/SnackBar'
+import NavBar from './components/NavBar'
 
 // main
 import LandingPage from "./scenes/main/LandingPage/LandingPage"
@@ -28,6 +29,8 @@ import ViewJobs from './scenes/user/Jobs/Jobs'
 function App() {
   return (
     <>
+
+      <NavBar />
       <Snackbar />
       <BrowserRouter>
         <Routes>
