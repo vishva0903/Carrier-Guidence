@@ -26,7 +26,7 @@ module.exports={
             
         },
        
-    getfeedback:async(req,res)=>{
+    getfeedbackId:async(req,res)=>{
         const id=req.params.id
         try {
              const result3=await Feedback.findById(id)

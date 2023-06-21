@@ -13,11 +13,10 @@ import Register from "./scenes/main/Register/Register"
 import AdminHome from "./scenes/admin/Home/Admin"
 import AddJob from "./scenes/admin/Job/AddJob/AddJob"
 import ViewJob from "./scenes/admin/Job/ViewJob/ViewJob"
-import AddCourse from "./scenes/admin/Course/AddCourse/AddCourse"
 import ViewCourse from "./scenes/admin/Course/ViewCourse/ViewCourse"
 import AddCollege from "./scenes/admin/College/AddCollege/AddCollege"
 import ViewCollege from "./scenes/admin/College/ViewCollege/ViewCollege"
-
+import Viewfeedback from './scenes/admin/Viewfeedback/viewfeedback'
 
 // user
 import College from "./scenes/user/Colleges/Colleges"
@@ -42,10 +41,10 @@ function App() {
             <Route index element={<AdminHome />} />
             <Route path="AddJob" element={<AddJob />} />
             <Route path="ViewJob" element={<ViewJob />} />
-            <Route path="AddCourse" element={<AddCourse />} />
             <Route path="ViewCourse" element={<ViewCourse />} />
             <Route path="AddCollege" element={<AddCollege />} />
             <Route path="viewCollege" element={<ViewCollege />} />
+            <Route path="Viewfeedback" element={<Viewfeedback/>} />
           </Route>
 
           {/* user */}

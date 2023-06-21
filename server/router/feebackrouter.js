@@ -5,7 +5,7 @@ const Feedbackcontroller=require('../controller/feedbackcontroller')
 
 router.post('/addFEEDBACK',Feedbackcontroller.addfeedback)
 router.get('/getFEEDBACK',Feedbackcontroller.getfeedback)
-router.get('/getFEEDBACK/:id',Feedbackcontroller.getfeedback)
+router.get('/getFEEDBACKID/:id',Feedbackcontroller.getfeedbackId)
 router.put('/putFEEDBACK/:id',Feedbackcontroller.updatefeedback)
 router.delete('/deleteFEEDBACK/:id',Feedbackcontroller.deletefeedback)
 
