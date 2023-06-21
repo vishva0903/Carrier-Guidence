@@ -51,12 +51,11 @@ function ViewCourse() {
             <table className="table table-bordered">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <th>SI.No</th>
                         <th>Course Name</th>
                         <th>Duration</th>
                         <th>Course Fee</th>
                         <th>Subjects</th>
-                        <th>Email</th>
                         <th>Delete</th>
                     </tr>
                 </thead>
@@ -81,6 +80,7 @@ function ViewCourse() {
                                     <td>
                                         {item.subjects}
                                     </td>
+                                    
                                     <td>
                                         <div class="btn-group" role="group">
                                             {/* <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" */}

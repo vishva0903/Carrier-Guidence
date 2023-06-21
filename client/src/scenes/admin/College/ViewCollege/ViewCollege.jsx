@@ -3,15 +3,13 @@ import './viewCollege.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import { useNavigate } from 'react-router-dom';
 
 
 
-function navigateToPage(pageUrl) {
-
-  window.location.href = pageUrl;
-}
 
 function ViewCollege() {
+    const navigate = useNavigate();
     const [rows, setRows] = useState([])
     function setRow() {
         axios.get("http://localhost:5000/college/getCOLLEGE")
@@ -22,19 +20,6 @@ function ViewCollege() {
             .catch((err) => {
                 console.log(err)
             })
-    }
-
-    // deleting
-    async function Delete(id) {
-        await axios
-            .delete(`http://localhost:5000/job/deleteJOB/${id}`)
-            .then((res) => {
-                setRow()
-                alert("Deleted")
-            })
-            .catch((err) => {
-                console.error(err);
-            });
     }
 
 
@@ -62,6 +47,7 @@ function ViewCollege() {
                 setRow()
                 alert("Course Added")
                 setCollegeId('')
+                navigate('/admin/ViewCourse')
             })
             .catch((err) => {
                 console.error(err);

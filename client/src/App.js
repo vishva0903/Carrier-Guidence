@@ -22,6 +22,7 @@ import ViewCollege from "./scenes/admin/College/ViewCollege/ViewCollege"
 // user
 import College from "./scenes/user/Colleges/Colleges"
 import AddFeedback from "./scenes/user/Feedback/AddFeedback/AddFeedback"
+import ViewJobs from './scenes/user/Jobs/Jobs'
 
 
 function App() {
@@ -51,7 +52,8 @@ function App() {
           <Route path="/user">
             <Route index element={<College />} />
             <Route path="AddFeedback" element={<AddFeedback />} />
-          </Route>
+            <Route path="ViewJob" element={<ViewJobs />} />
+          </Route>  
         </Routes>
       </BrowserRouter>
     </>

@@ -2,6 +2,7 @@ import React from 'react'
 import './viewjob.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 
 function ViewJob() {
@@ -38,14 +39,14 @@ function ViewJob() {
     setRow();
   }, []);
 
-
+  const navigate = useNavigate()
 
 
   return (
     <div className="container mt-5 p-1">
       <div className="row mb-4 justify-content-between">
-        <h3 className="col-md-6">My Listed Ads</h3>
-        <button type="button" className="col-md-2 btn btn-primary btn-sm" onclick="navigateToPage()">Add a College</button>
+        <h3 className="col-md-6">View Jobs</h3>
+        <button type="button" className="col-md-2 btn btn-primary btn-sm" onClick={()=>navigate('/admin/AddJob')}>Add Jobs</button>
       </div>
 
       <table className="table table-bordered">
