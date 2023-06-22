@@ -58,8 +58,9 @@ function App() {
           {/* user */}
           <Route path="/user">
             <Route index element={<College />} />
+            <Route path="College" element={<College />} />
             <Route path="AddFeedback" element={<AddFeedback />} />
-            <Route path="ViewJob" element={<ViewJobs />} />
+            <Route path="ViewJobs" element={<ViewJobs />} />
           </Route>
         </Routes>
       </BrowserRouter>

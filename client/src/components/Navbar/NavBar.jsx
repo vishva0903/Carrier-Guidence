@@ -32,8 +32,8 @@ function NavBar() {
             (role === 'user') &&
             (
               <>
-                <NavLink to="/user">Home</NavLink>
-                <NavLink to="/user/ViewJob">View Job</NavLink>
+                <NavLink to="/user/College">View College</NavLink>
+                <NavLink to="/user/ViewJobs">View Job</NavLink>
                 <NavLink to="/user/AddFeedback">Add Feedback</NavLink>
               </>
             )
