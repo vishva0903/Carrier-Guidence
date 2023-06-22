@@ -43,11 +43,9 @@ function ViewCollege() {
         console.log(collegeId)
         await axios
             .post(`http://localhost:5000/course/addCourse/${collegeId}`,form)
-            .then((res) => {
-                setRow()
+            .then((res) => {               
                 alert("Course Added")
-                setCollegeId('')
-                navigate('/admin/ViewCourse')
+                navigate(`/admin/ViewCourse/?id=${collegeId}`)
             })
             .catch((err) => {
                 console.error(err);

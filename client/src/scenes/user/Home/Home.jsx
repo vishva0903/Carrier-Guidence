@@ -20,15 +20,12 @@ function Colleges() {
   return (
     <div className="container mt-5 p-1">
       <div className="row lg-4 justify-content-between">
-        <h3 className="col-lg-6">Colleges</h3>
-        <p>Find Your Perfect Campus</p>
+        <h3 className="col-lg-6">Home</h3>
+        <p>Welcome to Home</p>
         <div className="col-lg-2">
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>College</Card.Title>
-              <NavLink to="/admin/addCOLLEGE">
-              <button className='btn btn-primary btn-sm w-40 m-2'>Add College</button>
-              </NavLink>
               <NavLink to="/admin/ViewCollege">
               <button className='btn btn-primary btn-sm w-40 m-2'>View College</button>
               </NavLink>
@@ -39,9 +36,6 @@ function Colleges() {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Job</Card.Title>
-              <NavLink to="/admin/AddJob">
-              <button className='btn btn-primary btn-sm w-40 m-2'>Add Job</button>
-              </NavLink>
               <NavLink to="/admin/ViewJob">
               <button className='btn btn-primary btn-sm w-40 m-2'>View Job</button>
               </NavLink>

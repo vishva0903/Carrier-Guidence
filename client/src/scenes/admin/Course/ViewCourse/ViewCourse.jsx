@@ -2,30 +2,33 @@ import React from 'react'
 import './viewCourse.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
+import { useSearchParams } from 'react-router-dom';
 
 
 function ViewCourse() {
 
     const [rows, setRows] = React.useState([]);
+    const[queryParameters] = useSearchParams()
+    const collegeId = queryParameters.get("id")
+    console.log("collegeid",collegeId)
     async function setRow() {
         await axios
-            .get(`http://localhost:5000/course/getCourse`)
+            .get(`http://localhost:5000/college/getcollegebyid/${collegeId}`)
             .then((res) => {
-                setRows(res.data.courses);
-                console.log(res.data);
-
+                setRows(res.data.result3.courses);
             })
             .catch((err) => {
                 console.error(err);
             });
     }
 
+    console.log(rows)
+
     // deleting
-    async function Delete(id) {
+    async function Delete(collegeId,courseId) {
         await axios
-            .delete(`http://localhost:5000/college/deleteCOLLEGE/${id}`)
+            .delete(`http://localhost:5000/course/deleteCourse/${collegeId}/${courseId}`)
             .then((res) => {
-                setRow()
                 alert("Deleted")
             })
             .catch((err) => {
@@ -81,7 +84,7 @@ function ViewCourse() {
                                         <div class="btn-group" role="group">
                                             {/* <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" */}
                                             {/* data-bs-target="#exampleModal"><i class="fa-solid fa-pen-to-square"></i></button> */}
-                                            <button class="btn btn-danger  btn-sm" onClick={() => Delete(item._id)}><i class="fa-solid fa-trash"></i></button>
+                                            <button class="btn btn-danger  btn-sm" onClick={() => Delete(collegeId,item._id)}><i class="fa-solid fa-trash"></i></button>
                                         </div>
                                     </td>
                                 </tr>

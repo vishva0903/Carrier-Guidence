@@ -24,6 +24,7 @@ import Viewfeedback from './scenes/admin/Viewfeedback/viewfeedback'
 import College from "./scenes/user/Colleges/Colleges"
 import AddFeedback from "./scenes/user/Feedback/AddFeedback/AddFeedback"
 import ViewJobs from './scenes/user/Jobs/Jobs'
+import Home from "./scenes/user/Home/Home"
 
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
 
           {/* user */}
           <Route path="/user">
-            <Route index element={<College />} />
+            <Route index element={<Home/>} />
             <Route path="College" element={<College />} />
             <Route path="AddFeedback" element={<AddFeedback />} />
             <Route path="ViewJobs" element={<ViewJobs />} />

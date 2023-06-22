@@ -95,44 +95,49 @@ module.exports = {
 
     deleteCourse: async (req, res) => {
         const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
-        console.log(collegeId,courseId);
+        console.log(collegeId, courseId);
+    
         try {
-            const college = await College.findById(collegeId);
-
+            const college = await College.findByIdAndUpdate(
+                collegeId,
+                { $pull: { courses: { _id: courseId } } },
+                { new: true }
+            );
+    
             if (!college) {
                 return res.status(404).json({ error: 'College not found' });
             }
-
-            const courseIndex = college.courses.findIndex(course => course._id.toString() === courseId);
-
-            if (courseIndex === -1) {
-                return res.status(404).json({ error: 'Course not found' });
-            }
-
-            college.courses.splice(courseIndex, 1); // Remove the course from the courses array
-
-            await college.save(); // Save the updated college
-
+    
             res.status(200).json({ message: 'Course deleted successfully' });
         } catch (error) {
             console.error(error);
             res.status(500).json({ error: 'Server error' });
         }
     }
-};
+}
+        
 
 
-//     deleteCourse: async (req, res) => {
-//         const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
-//         console.log(collegeId, courseId)
+// try {
+//     const college = await College.findById(collegeId);
 
-//         try {
-//             await College.findByIdAndDelete(collegeId,courseId)
-//             res.status(200).json("success");
-//         }
-//         catch (err) {
-//             res.status(400).json({ err });
-//         }
-
+//     if (!college) {
+//         return res.status(404).json({ error: 'College not found' });
 //     }
+
+//     const courseIndex = college.courses.findIndex(course => course._id.toString() === courseId);
+
+//     if (courseIndex === -1) {
+//         return res.status(404).json({ error: 'Course not found' });
+//     }
+
+//     college.courses.splice(courseIndex, 1); // Remove the course from the courses array
+
+//     await college.save(); // Save the updated college
+
+//     res.status(200).json({ message: 'Course deleted successfully' });
+// } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Server error' });
+// }
 // }
