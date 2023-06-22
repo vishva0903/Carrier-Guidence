@@ -10,31 +10,35 @@ module.exports = {
   //  ---------------------------------------- //signup method to add a new user//--------------------------- //
 
   signup: async (req, res) => {
-    const { firstName, lastName, email, password, courseStudied } =
-      req.body;
+    const { firstName,lastName,email,password,courseStudied} = req.body;
+    
+    const { errors, isValid } = SignupValidation(req.body);
 
     try {
-      // hashing password
-      const salt = bcrypt.genSaltSync(10);
-      const hashedPassword = await bcrypt.hash(password, salt);
-
-      // checking the user is existed or not with email
-      const userExist = await User.findOne({ email });
-      if (userExist) {
-        res.status(400).json({ message: "User already Existed" });
+      if (!isValid) {
+        res.status(404).json(errors);
+      } else {
+        await User.findOne({ email }).then(async (exist) => {
+          if (exist) {
+            errors.email = "Email already in use";
+            res.status(404).json(errors); 
+          } else {
+            const hashedpassword = bcrypt.hashSync(password, 8);
+            const result = await User.create({
+              firstName,
+              lastName,
+              email,
+              password: hashedpassword,
+              courseStudied,
+              role : "user",
+        
+            });
+            res.status(201).json({ message: "user added with success"});
+          }
+        });
       }
-      await User.create({
-        firstName,
-        lastName,
-        email,
-        password: hashedPassword,
-        courseStudied,
-        role: "user",
-      });
-      res.status(200).json({ message: "User added to mongodb succesfully" });
-    } catch (err) {
-      res.status(500).json({ message: "Server Error" });
-      console.log(err)
+    } catch (error) {
+      console.log(error.message);
     }
   },
   //  ---------------------------------------- //signin method to add a new user//--------------------------- //
