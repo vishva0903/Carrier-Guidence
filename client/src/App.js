@@ -5,6 +5,7 @@ import './App.css'
 import Snackbar from './components/snackbar/SnackBar'
 import NavBar from './components/Navbar/NavBar'
 
+
 // main
 import LandingPage from "./scenes/main/LandingPage/LandingPage"
 import Login from "./scenes/main/Login/Login"
@@ -35,10 +36,13 @@ function App() {
         <Snackbar />
         <Routes>
 
+
           {/* main */}
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
+          
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+    
 
           {/* admin */}
           <Route path="/admin">

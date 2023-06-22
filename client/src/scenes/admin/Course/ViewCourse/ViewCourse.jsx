@@ -3,10 +3,6 @@ import './viewCourse.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios'
 
-function navigateToPage(pageUrl) {
-
-  window.location.href = pageUrl;
-}
 
 function ViewCourse() {
 
@@ -45,7 +41,7 @@ function ViewCourse() {
         <div className="container mt-5 p-1">
             <div className="row mb-4 justify-content-between">
                 <h3 className="col-md-6">List of Courses</h3>
-                <button type="button" className="col-md-2 btn btn-primary btn-sm" onClick={() => navigateToPage('/admin/addCourse')}>Add a Course</button>
+                {/* <button type="button" className="col-md-2 btn btn-primary btn-sm" onClick={() => navigateToPage('/admin/')}>Add a Course</button> */}
             </div>
 
             <table className="table table-bordered">

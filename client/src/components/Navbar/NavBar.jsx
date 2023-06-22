@@ -29,11 +29,10 @@ function NavBar() {
         <div>Carrier Guidence</div>
         <div>
           {
-            (role == 'user') &&
+            (role === 'user') &&
             (
               <>
                 <NavLink to="/user">Home</NavLink>
-                <NavLink to="/user/viewCollege">View College</NavLink>
                 <NavLink to="/user/ViewJob">View Job</NavLink>
                 <NavLink to="/user/AddFeedback">Add Feedback</NavLink>
               </>
@@ -42,12 +41,12 @@ function NavBar() {
 
 
           {
-            (role == 'admin') &&
+            (role === 'admin') &&
             (
               <>
                 <NavLink to="/admin">Home</NavLink>
                 <NavLink to="/admin/addCOLLEGE">College</NavLink>
-                <NavLink to="admin/ViewCourse">Course</NavLink>
+                <NavLink to="/admin/ViewCourse">Course</NavLink>
                 <NavLink to="/admin/viewFeedback">Feedback</NavLink>
                 <NavLink to="/admin/addJOB">Job</NavLink>
               </>
@@ -55,7 +54,7 @@ function NavBar() {
           }
 
           {
-            (role == '') && (
+            (role === '') && (
               <>
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/login">Login</NavLink>

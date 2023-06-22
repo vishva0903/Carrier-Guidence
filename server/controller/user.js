@@ -6,7 +6,6 @@ const User = require("../model/userschema");
 // Load input validation
 const SignupValidation = require("../validator/signup");
 const SigninValidation = require("../validator/signin");
-const { logout } = require("../../client/src/store/auth");
 module.exports = {
   //  ---------------------------------------- //signup method to add a new user//--------------------------- //
 
