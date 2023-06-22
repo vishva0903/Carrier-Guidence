@@ -93,10 +93,9 @@ module.exports = {
         }
     },
 
-
     deleteCourse: async (req, res) => {
         const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
-
+        console.log(collegeId,courseId);
         try {
             const college = await College.findById(collegeId);
 
@@ -104,19 +103,36 @@ module.exports = {
                 return res.status(404).json({ error: 'College not found' });
             }
 
-            const course = college.courses.id(courseId); // Find the course in the courses array by its ID
+            const courseIndex = college.courses.findIndex(course => course._id.toString() === courseId);
 
-            if (!course) {
+            if (courseIndex === -1) {
                 return res.status(404).json({ error: 'Course not found' });
             }
 
-            course.remove(); // Remove the course from the courses array
+            college.courses.splice(courseIndex, 1); // Remove the course from the courses array
 
             await college.save(); // Save the updated college
 
             res.status(200).json({ message: 'Course deleted successfully' });
         } catch (error) {
             console.error(error);
+            res.status(500).json({ error: 'Server error' });
         }
     }
-}
+};
+
+
+//     deleteCourse: async (req, res) => {
+//         const { collegeId, courseId } = req.params; // Assuming collegeId and courseId are passed as parameters in the request
+//         console.log(collegeId, courseId)
+
+//         try {
+//             await College.findByIdAndDelete(collegeId,courseId)
+//             res.status(200).json("success");
+//         }
+//         catch (err) {
+//             res.status(400).json({ err });
+//         }
+
+//     }
+// }
