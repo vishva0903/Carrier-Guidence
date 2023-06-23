@@ -32,7 +32,6 @@ function NavBar() {
             (role === 'user') &&
             (
               <>
-                <NavLink to="/user/Home">Home</NavLink>
                 <NavLink to="/user/College">View College</NavLink>
                 <NavLink to="/user/ViewJobs">View Job</NavLink>
                 <NavLink to="/user/AddFeedback">Add Feedback</NavLink>
@@ -45,9 +44,7 @@ function NavBar() {
             (role === 'admin') &&
             (
               <>
-                <NavLink to="/admin">Home</NavLink>
                 <NavLink to="/admin/addCOLLEGE">College</NavLink>
-                <NavLink to="/admin/ViewCourse">Course</NavLink>
                 <NavLink to="/admin/viewFeedback">Feedback</NavLink>
                 <NavLink to="/admin/addJOB">Job</NavLink>
               </>

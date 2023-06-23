@@ -83,7 +83,6 @@ function ViewCollege() {
             <div className="container mt-5 p-1">
                 <div className="row mb-4 justify-content-between">
                     <h3 className="col-md-6">List of Colleges</h3>
-                    <button type="button" className="col-md-2 btn btn-primary btn-sm" onclick="">Add a College</button>
                 </div>
 
                 <table className="table table-bordered">
