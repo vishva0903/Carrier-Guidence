@@ -29,6 +29,7 @@ function ViewCourse() {
         await axios
             .delete(`http://localhost:5000/course/deleteCourse/${collegeId}/${courseId}`)
             .then((res) => {
+                setRows(prevRows => prevRows.filter(item => item._id !== courseId));
                 alert("Deleted")
             })
             .catch((err) => {

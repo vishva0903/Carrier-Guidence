@@ -26,7 +26,7 @@ function Colleges() {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>College</Card.Title>
-              <NavLink to="/admin/ViewCollege">
+              <NavLink to="/user/College">
               <button className='btn btn-primary btn-sm w-40 m-2'>View College</button>
               </NavLink>
             </Card.Body>
@@ -36,7 +36,7 @@ function Colleges() {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Job</Card.Title>
-              <NavLink to="/admin/ViewJob">
+              <NavLink to="/user/ViewJobs">
               <button className='btn btn-primary btn-sm w-40 m-2'>View Job</button>
               </NavLink>
             </Card.Body>
@@ -49,9 +49,9 @@ function Colleges() {
               <NavLink to="/user/AddFeedback">
               <button className='btn btn-primary btn-sm w-40 m-2'>Add Feedback</button>
               </NavLink>
-              <NavLink to="/admin/viewfeedback">
+              {/* <NavLink to="/admin/viewfeedback">
               <button className='btn btn-primary btn-sm w-40 m-2'>View Feedback</button>
-              </NavLink>
+              </NavLink> */}
             </Card.Body>
           </Card>
         </div>

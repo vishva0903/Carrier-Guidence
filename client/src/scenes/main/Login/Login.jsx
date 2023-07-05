@@ -30,20 +30,20 @@ function Login() {
                 console.log(userRole);
                 localStorage.setItem('token', JSON.stringify(token))
                 switch (userRole) {
-                    case 'user':
+                    case 'user':{
                         dispatch(setUser())
                         navigate('/user')
                         break;
-
-
-                    case 'admin':
+                    }    
+                    case 'admin':{
                         dispatch(setAdmin())
                         navigate('/admin')
                         break;
-
-                    default:
+                    }
+                    default:{
                         console.log("No roles found")
                         navigate('/')
+                    }
                 }
             })
             .catch((err) => console.log(err));

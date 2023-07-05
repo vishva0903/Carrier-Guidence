@@ -51,7 +51,7 @@ function NavBar() {
             )
           }
 
-          {
+          {/* {
             (role === '') && (
               <>
                 <NavLink to="/">Home</NavLink>
@@ -60,7 +60,7 @@ function NavBar() {
 
               </>
             )
-          }
+          } */}
         </div>
 
         <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
