@@ -30,7 +30,7 @@ module.exports = {
               email,
               password: hashedpassword,
               courseStudied,
-              role : "admin",
+              role : "user",
         
             });
             res.status(201).json({ message: "user added with success"});

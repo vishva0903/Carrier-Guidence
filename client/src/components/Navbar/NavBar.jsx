@@ -63,7 +63,16 @@ function NavBar() {
           } */}
         </div>
 
-        <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+        {
+            (role === 'admin'|| role ==='user') &&
+            (
+              <>
+                <button className="btn btn-primary" onClick={handleLogout}>Logout</button>
+              </>
+            )
+          }
+  
+      
       </div>
     </>
   );
