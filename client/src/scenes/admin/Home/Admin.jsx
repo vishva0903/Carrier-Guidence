@@ -52,9 +52,9 @@ function Colleges() {
           <Card style={{ width: '18rem' }}>
             <Card.Body>
               <Card.Title>Feedback</Card.Title>
-              <NavLink to="/user/AddFeedback">
+              {/* <NavLink to="/user/AddFeedback">
               <button className='btn btn-primary btn-sm w-40 m-2'>Add Feedback</button>
-              </NavLink>
+              </NavLink> */}
               <NavLink to="/admin/viewfeedback">
               <button className='btn btn-primary btn-sm w-40 m-2'>View Feedback</button>
               </NavLink>
