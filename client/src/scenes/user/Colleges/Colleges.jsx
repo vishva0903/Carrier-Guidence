@@ -85,9 +85,9 @@ function Colleges() {
                         <Accordion.Item eventKey={val}>
                           <Accordion.Header>{item.courseName}</Accordion.Header>
                           <Accordion.Body>
-                            <p>{item.duration}</p>
-                            <p>{item.courseFee}</p>
-                            <p>{item.subjects}</p>
+                            <p>Duration: {item.duration}</p>
+                            <p>Course Fee: {item.courseFee}</p>
+                            <p>Subjects: {item.subjects}</p>
                           </Accordion.Body>
                         </Accordion.Item>
                       </>

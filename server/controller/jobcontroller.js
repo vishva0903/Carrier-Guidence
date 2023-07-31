@@ -2,7 +2,7 @@ const Job = require("../model/jobschema")
 module.exports = {
     addjob: async (req, res) => {
         const { jobTitle, companyName, jobRequirements, salaryPackage,
-            jobType, contactNumber, email } = req.body;
+            jobType, contactNumber, email, Qualification } = req.body;
         try {
             const result = await Job.create({
                 jobTitle,
@@ -11,7 +11,8 @@ module.exports = {
                 salaryPackage,
                 jobType,
                 contactNumber,
-                email
+                email,
+                Qualification
             });
             res.status(200).json({ result });
         }

@@ -85,10 +85,19 @@ function Job() {
 
                         <div className="row">
                             <div className="mb-3">
+                                <label className="form-label">Qualification</label>
+                                <input type="text" className="form-control" name="Qualification" onChange={onChangeHandler} />
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="mb-3">
                                 <label className="form-label">Job Requiements</label>
                                 <input type="textarea" className="form-control" name="jobRequirements" onChange={onChangeHandler} />
                             </div>
                         </div>
+
+                        
 
                         <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
                     </form>

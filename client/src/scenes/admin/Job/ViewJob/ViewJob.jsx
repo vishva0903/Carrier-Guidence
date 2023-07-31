@@ -58,6 +58,7 @@ function ViewJob() {
             <th>Job Type</th>
             <th>Salary</th>
             <th>Email</th>
+            <th>Qualification</th>
             <th>Delete</th>
           </tr>
         </thead>
@@ -84,6 +85,9 @@ function ViewJob() {
                   </td>
                   <td>
                     {item.email}
+                  </td>
+                  <td>
+                    {item.Qualification}
                   </td>
                   <td>
                     <div class="btn-group" role="group">

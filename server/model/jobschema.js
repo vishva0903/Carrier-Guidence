@@ -30,5 +30,9 @@ const JobSchema = new Schema(
             type: String,
             required: true,
         },
+        Qualification : {
+            type: String,
+            required: true,
+        },
     });
     module.exports=mongoose.model("job",JobSchema)
