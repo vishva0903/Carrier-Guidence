@@ -76,6 +76,16 @@ function AddCollege() {
                             </div>
                         </div>
 
+                        <div className="row">
+                            <div className="col">
+                                <div className="mb-3">
+                                    <label className="form-label">Category</label>
+                                    <input type="text" className="form-control" name='category' onChange={onChangeHandler} />
+
+                                </div>
+                            </div>
+                        </div>
+
                         <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>
                     </form>
                 </div>

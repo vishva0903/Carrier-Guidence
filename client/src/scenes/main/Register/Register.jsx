@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function UserLogin() {
     // form handler
     const [form, setForm] = useState({})
+    const [followUp, setFollowUp] = useState([]);
     const onChangeHandler = (event) => {
         setForm({
             ...form,
@@ -17,10 +18,14 @@ function UserLogin() {
         console.log(form);
     }
 
+
+
     const navigate = useNavigate();
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        console.log(form)
+
         await axios.post("http://localhost:5000/signup", form)
             .then((response) => {
                 toast.success("Account Created")
@@ -29,6 +34,7 @@ function UserLogin() {
             })
             .catch((err) => console.log(err));
     };
+
     return (
         <>
             <div className="container mb-5">
@@ -68,11 +74,15 @@ function UserLogin() {
                             </div>
                         </div>
 
-                        <div className="row mb-2">
-                            <div className='col'>
-                                <label className="form-label">Course studied in Higher Secondary</label>
-                                <input type="text" className="form-control" name='courseStudied' onChange={onChangeHandler} />
-                            </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="inputGroupSelect01">Course studied in Higher Secondary</label>
+                            <select class="form-select" id="inputGroupSelect01" name="courseStudied" onChange={onChangeHandler}>
+                                <option selected>Choose...</option>
+                                <option>Biology</option>
+                                <option>Computer</option>
+                                <option>Commerce</option>
+                                <option>Humanities</option>
+                            </select>
                         </div>
 
                         <button className="btn btn-primary" onClick={onSubmitHandler}>Submit</button>

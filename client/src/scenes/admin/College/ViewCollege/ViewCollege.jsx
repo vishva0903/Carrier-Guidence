@@ -94,6 +94,7 @@ function ViewCollege() {
                             <th>Address</th>
                             <th>Contact Number</th>
                             <th>Email</th>
+                            <th>Category</th>
                             <th>Delete</th>
                             <th>Action</th>
                         </tr>
@@ -121,6 +122,9 @@ function ViewCollege() {
                                         </td>
                                         <td>
                                             {item.email}
+                                        </td>
+                                        <td>
+                                            {item.category}
                                         </td>
                                         <td>
                                             <div class="btn-group" role="group">

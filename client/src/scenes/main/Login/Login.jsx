@@ -9,7 +9,9 @@ import { toast } from "react-toastify";
 function Login() {
     const dispatch = useDispatch()
     // form handler
+    const [colleges, setColleges] = useState([])
     const [form, setForm] = useState({})
+    const[id] = useState("")
     const onChangeHandler = (event) => {
         setForm({
             ...form,
@@ -24,14 +26,18 @@ function Login() {
         event.preventDefault();
         await axios.post("http://localhost:5000/signin", form)
             .then((response) => {
+                console.log(response)
                 toast.success("Login Succesfull")
                 const userRole = response.data.data.role
                 const token = response.data.token
+                const id = response.data.data.courseStudied
                 console.log(userRole);
                 localStorage.setItem('token', JSON.stringify(token))
+                localStorage.setItem('id', JSON.stringify(id))
+                console.log(id)
                 switch (userRole) {
                     case 'user':{
-                        dispatch(setUser())
+                        dispatch(setUser(response.data.data.courseStudied))
                         navigate('/user')
                         break;
                     }    

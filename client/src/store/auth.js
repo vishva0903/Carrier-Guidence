@@ -4,6 +4,7 @@ const initialState = {
     id: '',
     isLoggedIn: false,
     role: '',
+    courseStudied:'',
 }
 
 export const LoginedUserSlice = createSlice({
@@ -34,6 +35,6 @@ export const LoginedUserSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { loggedUser, isLoggedIn, isNotLoggedIn, setUser,setAdmin, logout } = LoginedUserSlice.actions
+export const { loggedUser, isLoggedIn, isNotLoggedIn, setUser,setAdmin, logout, } = LoginedUserSlice.actions
 
 export default LoginedUserSlice.reducer

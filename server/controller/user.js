@@ -29,8 +29,8 @@ module.exports = {
               lastName,
               email,
               password: hashedpassword,
-              courseStudied,
               role : "user",
+              courseStudied,
         
             });
             res.status(201).json({ message: "user added with success"});
@@ -74,13 +74,14 @@ module.exports = {
 
             const data = {
               id: user._id,
-              role: user.role
+              role: user.role,
+              courseStudied:user.courseStudied,
             }
             // console.log(data);
             // res.cookie("Authorization", token, options);
             res.status(201).json({
               token,
-              data
+              data,
             });
           }
         });
@@ -112,9 +113,9 @@ module.exports = {
       const userdata = await User.findById(id);
       const data = {
         firstName: userdata.firstName,
-        LastName: userdata.lastNameName,
+        LastName: userdata.lastName,
         email: userdata.email,
-
+        courseStudied: userdata.courseStudied
       }
       res.status(200).json(data)
 
